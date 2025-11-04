@@ -230,7 +230,7 @@ class FoundationPose:
 
     logging.info(f'sorted scores:{scores}')
 
-    best_pose = poses[0]@self.get_tf_to_centered_mesh()
+    best_pose = poses[0]# @self.get_tf_to_centered_mesh()
     self.pose_last = poses[0]
     self.best_id = ids[0]
 
@@ -265,6 +265,6 @@ class FoundationPose:
     if self.debug>=2:
       extra['vis'] = vis
     self.pose_last = pose
-    return (pose@self.get_tf_to_centered_mesh()).data.cpu().numpy().reshape(4,4)
+    return pose.data.cpu().numpy().reshape(4,4)
 
 
