@@ -16,6 +16,46 @@ We present FoundationPose, a unified foundation model for 6D object pose estimat
 **🥇 No. 1 on the world-wide [BOP leaderboard](https://bop.felk.cvut.cz/leaderboards/pose-estimation-unseen-bop23/core-datasets/) (as of 2024/03) for model-based novel object pose estimation.**
 <img src="assets/bop.jpg" width="80%">
 
+
+## Robot–Server Communication (Himchan)
+
+### 1) Connect the robot and server (**wired**) 
+
+Replace interface names with yours (check with `ip link`). 
+
+Example below uses `enx20181210b33d` for robot and `enx606d3cbaa82e` (GPU 15) for server.
+
+
+**On the Robot PC**
+
+```bash
+
+sudo ip addr add 192.168.0.10/24 dev enx20181210b33d
+```
+
+**On the Server PC**
+
+```bash
+
+sudo ip addr add 192.168.0.2/24 dev enx606d3cbaa82e
+```
+
+**Connectivity test**
+
+```bash
+# From the Robot PC -> Server PC
+ping -c 3 192.168.0.2
+
+# (Optional) From the Server PC -> Robot PC
+ping -c 3 192.168.0.10
+```
+
+
+
+### 2) Run FoundationPose ClientNode on the Robot PC
+
+See `foundationpose_client.py` for usage
+
 ## Demos
 
 Robotic Applications:
